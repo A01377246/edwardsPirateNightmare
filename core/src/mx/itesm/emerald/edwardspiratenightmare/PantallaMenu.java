@@ -23,7 +23,6 @@ public class PantallaMenu extends Pantalla {
 
     @Override
     public void show() { // Se ejecuta al inicio, antes de mostrar la pantalla
-
         crearMenu(); // usar otro método para no saturar con código
     }
 
@@ -35,9 +34,9 @@ public class PantallaMenu extends Pantalla {
         // crear botón
 
         Button btnjugar = crearBoton("botones/botonJugar.png", "botones/botonJugarS.png");
-        btnjugar.setPosition(ANCHO/3, 2*ALTO/4, Align.center); // centrar el botòn en las coordenadas selecconadas
+        btnjugar.setPosition(ANCHO / 3, 2 * ALTO / 4, Align.center); // centrar el botòn en las coordenadas selecconadas
         // Hacer algo cuando se seleccione el boton
-        btnjugar.addListener(new ClickListener(){
+        btnjugar.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 // Cambiar pantalla
@@ -46,8 +45,8 @@ public class PantallaMenu extends Pantalla {
         });
 
         Button btncreditos = crearBoton("botones/botonCreditosf.png", "botones/botonCreditosfS.png");
-        btncreditos.setPosition(2*ANCHO/3, ALTO/4, Align.center );
-        btncreditos.addListener(new ClickListener(){
+        btncreditos.setPosition(2 * ANCHO / 3, ALTO / 4, Align.center);
+        btncreditos.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 juego.setScreen(new PantallaCreditos(juego));
@@ -56,7 +55,7 @@ public class PantallaMenu extends Pantalla {
 
         Button btnAjustes = crearBoton("botones/boton ajustes.png", "botones/boton ajustes.png");
         btnAjustes.setPosition(0, 0); // habra que editar el boton, le sobra mucho espacio
-        btnAjustes.addListener(new ClickListener(){
+        btnAjustes.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 juego.setScreen(new PantallaAjustes(juego));
@@ -64,23 +63,22 @@ public class PantallaMenu extends Pantalla {
         });
 
         Button btnHistoria = crearBoton("botones/botonHistoria.png", "botones/botonHistoriaS.png");
-        btnHistoria.setPosition(2*ANCHO/3, 2*ALTO/4, Align.center );
-        btnHistoria.addListener(new ClickListener(){
+        btnHistoria.setPosition(2 * ANCHO / 3, 2 * ALTO / 4, Align.center);
+        btnHistoria.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 juego.setScreen(new PantallaHistoria(juego));
             }
         });
 
-        Button btnTienda= crearBoton("botones/botonTienda.png", "botones/botonTiendaS.png");
-        btnTienda.setPosition(ANCHO/3, ALTO/4, Align.center );
-        btnTienda.addListener(new ClickListener(){
+        Button btnTienda = crearBoton("botones/botonTienda.png", "botones/botonTiendaS.png");
+        btnTienda.setPosition(ANCHO / 3, ALTO / 4, Align.center);
+        btnTienda.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 juego.setScreen(new PantallaTienda(juego));
             }
         });
-
 
 
         // Agregar botón a escena
@@ -112,29 +110,25 @@ public class PantallaMenu extends Pantalla {
     @Override
     //Se ejecuta automáticamente (60 veces por segundo)
     public void render(float delta) { // tiempo transcurrido entre frames, delta
-        borrarPantalla(0,1,0); // borrar pantalla
+        borrarPantalla(0, 1, 0); // borrar pantalla
 
         batch.begin(); // comenzar batch
         batch.setProjectionMatrix(camara.combined); // instrucciones de opengl para que to se vea correcto
-        batch.draw(texturaFondo,0,0);
+        batch.draw(texturaFondo, 0, 0);
         batch.end();
 
         escenaMenu.draw(); // La escena Menu se dibuja por si sola, no necesita batch
-
     }
 
     @Override
     public void pause() {
-
     }
 
     @Override
     public void resume() {
-
     }
 
     @Override
     public void dispose() {
-
     }
 }

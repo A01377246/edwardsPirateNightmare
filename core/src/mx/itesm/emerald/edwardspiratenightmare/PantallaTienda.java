@@ -20,8 +20,8 @@ public class PantallaTienda extends Pantalla {
         texturaVolver = new Texture("botones/botonvolverS.png");
         TextureRegionDrawable trdBtnVolver = new TextureRegionDrawable(texturaVolver);
         Button botonVolver = new Button(trdBtnVolver);
-        botonVolver.setPosition(0,0);
-        botonVolver.addListener(new ClickListener(){
+        botonVolver.setPosition(0, 0);
+        botonVolver.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 // Cambiar pantalla
@@ -31,36 +31,30 @@ public class PantallaTienda extends Pantalla {
         escenaTienda.addActor(botonVolver);
         Gdx.input.setInputProcessor(escenaTienda);
     }
+
     @Override
     public void show() {
-
     }
 
     @Override
     public void render(float delta) {
         batch.begin();
         batch.setProjectionMatrix(camara.combined);
-        batch.draw(tienda,0,0);
+        batch.draw(tienda, 0, 0);
         batch.end();
-
         escenaTienda.draw();
-
-
     }
 
     @Override
     public void pause() {
-
     }
 
     @Override
     public void resume() {
-
     }
 
     @Override
     public void dispose() {
-
     }
 }
 
