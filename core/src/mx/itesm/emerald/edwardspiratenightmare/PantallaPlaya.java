@@ -88,7 +88,6 @@ public class PantallaPlaya extends Pantalla {
         edward = new Edward(texturaEdward, 20, 50);
     }
 
-
     @Override
     public void render(float delta) {
         //Actualizar
@@ -110,7 +109,7 @@ public class PantallaPlaya extends Pantalla {
         for (Fantasma1 fantasma1 : arrFantasma1) {
             fantasma1.render(batch);
         }
-        //Dibujar bolas de fuego
+        //Dibujar balas
         for (Bala bala : arrBalas) {
             bala.render(batch);
         }
@@ -123,7 +122,6 @@ public class PantallaPlaya extends Pantalla {
         actualizarBalas(delta);
     }
 
-
     private void actualizarBalas(float delta) {
         for (int i = arrBalas.size - 1; i >= 0; i--) {
             Bala bala = arrBalas.get(i);
@@ -131,9 +129,22 @@ public class PantallaPlaya extends Pantalla {
             //prueba si la bola debe de desaparecer si se sale de la pantalla
             if (bala.getX() > ANCHO) {
                 arrBalas.removeIndex(i);
+            } else {
+                for (int iA = arrFantasma1.size - 1; iA >= 0; iA--) {
+                    Fantasma1 fantasma1 = arrFantasma1.get(iA);
+                    if (bala.sprite.getBoundingRectangle().overlaps(fantasma1.sprite.getBoundingRectangle())) {
+                        //Contar Puntos
+                        puntos += 150;
+                        //Borrar bala
+                        arrBalas.removeIndex(i);
+                        arrFantasma1.removeIndex(iA);
+                        break;
+                    }
+                }
             }
         }
     }
+
 
     private void actualizarFantasma1(float delta) {
         timerCrearFantasma1 += delta;
@@ -169,6 +180,9 @@ public class PantallaPlaya extends Pantalla {
 
     @Override
     public void dispose() {
+        arrCorazones.clear();
+        arrFantasma1.clear();
+        arrBalas.clear();
     }
 
     private class ProcesarEntrada implements InputProcessor {
