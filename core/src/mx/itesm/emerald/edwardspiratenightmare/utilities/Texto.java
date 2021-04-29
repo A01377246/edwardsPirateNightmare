@@ -11,7 +11,6 @@ public class Texto {
     public Texto(String archivo) {
         font = new BitmapFont(Gdx.files.internal(archivo));
     }
-
     /*
     Despliega el texto 'mensaje' en coordenadas centrado en (x,y)
      */
