@@ -1,68 +1,62 @@
 package mx.itesm.emerald.edwardspiratenightmare;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Align;
 
-public class PantallaAjustes extends Pantalla {
-    private Texture fondoPantallaAjustes;
-    private Texture botonBrillo;
-    private Texture botonsinMusica;
-    private Stage escenaAjustes;
+public class PantallaJuegoTerminado extends Pantalla{
 
-    public PantallaAjustes(final EdwardsPirateNightmare juego) {
-        escenaAjustes= new Stage(vista);
-        fondoPantallaAjustes = new Texture("pantallas/lvl1.png");
-        Button botonMusica = crearBoton("sprites/headphones.png");
-        botonMusica.setPosition(ANCHO /3, ALTO - 200);
-        Button botonVolver = crearBoton("botones/botonVolverS.png"); // cargar imágen del botón
-        botonVolver.setPosition(0, 25);
-        botonVolver.addListener(new ClickListener(){
+    private Stage escenaJuegoTerminado;
+    private Texture fondojuegoTerminado;
+    private Texture texturaTumba;
+    private Tumba tumbaFinalJuego;
+
+    public PantallaJuegoTerminado(final EdwardsPirateNightmare juego){
+        texturaTumba = new Texture("sprites/Tumbstone.png");
+        tumbaFinalJuego = new Tumba(texturaTumba, ANCHO/2, ALTO/4); //Dibujar tumba en el centro de la pantalla
+        tumbaFinalJuego.sprite.setScale(5); //Dibujar la tumba 5 veces más grande
+        fondojuegoTerminado = new Texture("pantallas/pantallaFin.png");
+        escenaJuegoTerminado = new Stage(vista); // parámetro vista para escalar correctamente
+        Button botonVolverAMenu = crearBoton("botones/botonVolverMenu.png"); // cargar imágen del botón
+        botonVolverAMenu.setPosition(0, 25);
+        botonVolverAMenu.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                    // volver al menú principal
+                // Cambiar a pantalla de juego terminado
                 juego.setScreen(new PantallaMenu(juego));
             }
         });
-
-        /*botonMusica.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-
-            }
-        });
-        */
-        escenaAjustes.addActor(botonMusica); // añadir boton musica a escena
-        escenaAjustes.addActor(botonVolver);
-        Gdx.input.setInputProcessor(escenaAjustes); // la escena juego se encarga de registar el inpu
-
-
+        escenaJuegoTerminado.addActor(botonVolverAMenu); // añadir boton a escena
+        Gdx.input.setInputProcessor(escenaJuegoTerminado); // la escena juego se encarga de registrar el input
 
     }
+
+
+
+
 
     @Override
     public void show() {
 
-
     }
-
-
 
     @Override
     public void render(float delta) {
+
         batch.begin();
         batch.setProjectionMatrix(camara.combined);
-
-        batch.draw(fondoPantallaAjustes,0,0);
-        escenaAjustes.draw(); // dibujar escena de la pantalla ajustes
-
-
+        batch.draw(fondojuegoTerminado,0,0);
+        tumbaFinalJuego.render(batch); // Dibujar Tumba
         batch.end();
+
+        escenaJuegoTerminado.draw(); // dibujar la escena de juego terminado
+
+
 
     }
 

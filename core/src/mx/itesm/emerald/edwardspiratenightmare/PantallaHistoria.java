@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
+
+
 public class PantallaHistoria extends Pantalla {
     private Texture historia;
     private Texture texturaVolver;

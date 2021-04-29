@@ -21,6 +21,9 @@ public class Edward extends Objeto {
     private final float v0y = 100;      //Componente en y de la velocidad
     private final float g = 50f;      //pixeles/s^2
 
+    //Movimiento a la derecha
+    private final float vx = 150;
+
     private EstadoEdward estado;
 
     public Edward(Texture textura, float x, float y) {
@@ -79,5 +82,19 @@ public class Edward extends Objeto {
             tVuelo = 2 * v0y / g;
             estado = EstadoEdward.SALTANDO;
         }
+    }
+
+    public void moverDerecha(float delta){ // este método solo se llama cuando termina el nivel para que Edward salga de la pantalla
+        float dx = vx * delta;
+        sprite.setX(dx + sprite.getX()); // actualizar posición
+
+    }
+
+    public float getX() {
+        return sprite.getX();
+    }
+
+    public float getY() {
+        return sprite.getY();
     }
 }
