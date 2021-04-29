@@ -218,7 +218,7 @@ public class PantallaPlaya extends Pantalla {
             camara.unproject(v);
             if (v.x >= ANCHO / 2) {
                 //Dispara
-                Bala bala = new Bala(texturaBala, edward.getSprite().getX(), edward.getSprite().getY());
+                Bala bala = new Bala(texturaBala, edward.getSprite().getX(), edward.getSprite().getY()+60);
                 arrBalas.add(bala);
             } else {
                 edward.saltar();
