@@ -36,6 +36,7 @@ public class PantallaPlaya extends Pantalla {
 
     //Vidas del personaje
     private Array<Corazon> arrCorazones;
+    private int iVidas = 4;
 
     public PantallaPlaya(EdwardsPirateNightmare juego) {
         this.juego = juego;
@@ -56,12 +57,10 @@ public class PantallaPlaya extends Pantalla {
     private void crearCorazon() {
         Texture texturaCorazon = new Texture("sprites/heart.png");
         arrCorazones = new Array<>(5);
-        for (int renglon = 0; renglon < 1; renglon++) {
-            for (int colunma = 0; colunma < 5; colunma++) {
-                Corazon corazon = new Corazon(texturaCorazon,
-                        50 + colunma * 60, 0.85f * ALTO + renglon * 60);
-                arrCorazones.add(corazon);
-            }
+        for (int colunma = 0; colunma < 5; colunma++) {
+            Corazon corazon = new Corazon(texturaCorazon,
+                    50 + colunma * 60, 0.88f * ALTO);
+            arrCorazones.add(corazon);
         }
     }
 
@@ -145,7 +144,6 @@ public class PantallaPlaya extends Pantalla {
         }
     }
 
-
     private void actualizarFantasma1(float delta) {
         timerCrearFantasma1 += delta;
         if (timerCrearFantasma1 > TIEMPO_CREAR_FANTASMA1) {
@@ -160,6 +158,18 @@ public class PantallaPlaya extends Pantalla {
         //Mover al fantasma1
         for (Fantasma1 fantasma1 : arrFantasma1) {
             fantasma1.moverIzquierda(delta);
+        }
+
+        for (int i = arrFantasma1.size - 1; i >= 0; i--) {
+            Fantasma1 fantasma1 = arrFantasma1.get(i);
+            if (edward.sprite.getBoundingRectangle().overlaps(fantasma1.sprite.getBoundingRectangle())) {
+                arrFantasma1.removeIndex(i);
+                arrCorazones.removeIndex(iVidas);
+                iVidas = iVidas - 1;
+                break;
+                //Corazon corazon = arrCorazones.get(iVidas);
+                //corazon.setEstado(EstadoCorazon.EXPLOTA);
+            }
         }
     }
 
