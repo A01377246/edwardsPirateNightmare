@@ -10,12 +10,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import mx.itesm.emerald.edwardspiratenightmare.Objeto;
 
 public class Fantasma1 extends Objeto {
+
     private Animation<TextureRegion> animacion;
     private float timerAnimacion;
 
     //Fisica
     private float velocidadX = -400;
-
 
     public Fantasma1(Texture textura, float x, float y) {
         TextureRegion region = new TextureRegion(textura);
@@ -45,10 +45,11 @@ public class Fantasma1 extends Objeto {
         sprite.setX(sprite.getX() + dx);
     }
 
-    public float getX(){
+    public float getX() {
         return sprite.getX();
     }
-    public float getY(){
+
+    public float getY() {
         return sprite.getY();
     }
 }

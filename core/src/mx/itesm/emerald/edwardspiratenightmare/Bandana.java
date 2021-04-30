@@ -8,6 +8,5 @@ public class Bandana extends Objeto {
 
     public Bandana(Texture texturaBandana, float x, float y){
         super(texturaBandana, x, y);
-
     }
 }

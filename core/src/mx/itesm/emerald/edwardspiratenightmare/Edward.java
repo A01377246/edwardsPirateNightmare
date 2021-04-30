@@ -84,10 +84,10 @@ public class Edward extends Objeto {
         }
     }
 
-    public void moverDerecha(float delta){ // este método solo se llama cuando termina el nivel para que Edward salga de la pantalla
+    // este método solo se llama cuando termina el nivel para que Edward salga de la pantalla
+    public void moverDerecha(float delta) {
         float dx = vx * delta;
         sprite.setX(dx + sprite.getX()); // actualizar posición
-
     }
 
     public float getX() {

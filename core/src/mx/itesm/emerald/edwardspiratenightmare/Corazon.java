@@ -18,6 +18,5 @@ public class Corazon extends Objeto {
     public void moverIzquierda(float delta){
         float dx = vX * delta;
         sprite.setX(sprite.getX() + dx);
-
     }
 }
