@@ -9,8 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class EdwardsPirateNightmare extends Game {
 
-		public void create(){
-		// Mostrar primer pantalla
-		setScreen(new PantallaMenu(this)); //Exclusivo de clase game
-	}
+    // Mostrar primer pantalla
+    public void create() {
+        setScreen(new PantallaMenu(this)); //Exclusivo de clase game
+    }
 }

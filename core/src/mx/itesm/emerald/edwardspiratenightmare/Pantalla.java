@@ -12,8 +12,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  * Representa el comportamiento genérico de cualquier pantalla que forma
  * parte del juego
  */
-public abstract class Pantalla implements Screen
-{
+
+public abstract class Pantalla implements Screen {
     // Atributos disponibles en todas las clases del proyecto
     public static final float ANCHO = 1280;
     public static final float ALTO = 720;
@@ -22,6 +22,7 @@ public abstract class Pantalla implements Screen
     // Todas las pantallas tienen una cámara y una vista
     protected OrthographicCamera camara;
     protected Viewport vista;
+
     // Todas las pantallas dibujan algo :)
     protected SpriteBatch batch;
 
@@ -40,13 +41,13 @@ public abstract class Pantalla implements Screen
 
     // Borra la pantalla con fondo negro
     protected void borrarPantalla() {
-        Gdx.gl.glClearColor(0,0,0,1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
     // Borra la pantalla con el color RGB (r,g,b)
     protected void borrarPantalla(float r, float g, float b) {
-        Gdx.gl.glClearColor(r,g,b,1);
+        Gdx.gl.glClearColor(r, g, b, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
